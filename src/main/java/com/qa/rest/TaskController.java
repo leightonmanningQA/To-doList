@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,6 +51,14 @@ public class TaskController {
 	@PutMapping("/update/{id}")
 	public ResponseEntity<TaskDTO> update(@PathVariable("id")Long id, @RequestBody TaskDomain task) {
 		return new ResponseEntity<TaskDTO>(this.service.update(id, task),HttpStatus.ACCEPTED);
+	}
+	// DELETE
+	@DeleteMapping("/delete/{id}")
+	public ResponseEntity<Object> removeTask(@PathVariable Long id) {
+
+		return this.service.removeTask(id) ? new ResponseEntity<>(HttpStatus.NO_CONTENT)
+				: new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+
 	}
 
 }

@@ -47,20 +47,19 @@ public class TaskServices {
 
 	// DELETE
 	public boolean removeTask(Long id) {
-		// remove task and return it
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
 		return !exists;
 	}
-	
+
 	// PUT/UPDATE
 	public TaskDTO update(Long id, TaskDomain newDetails) {
-	  this.repo.findById(id).orElseThrow();
-	  
-	  //task target
-	  newDetails.setId(id);
-	  
-	  return this.mapToDTO(this.repo.save(newDetails));
+		this.repo.findById(id).orElseThrow();
+
+		// task target
+		newDetails.setId(id);
+
+		return this.mapToDTO(this.repo.save(newDetails));
 	}
 
 }
