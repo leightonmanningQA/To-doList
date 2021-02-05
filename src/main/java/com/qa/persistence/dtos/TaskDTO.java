@@ -1,9 +1,11 @@
 package com.qa.persistence.dtos;
 
+
+
 public class TaskDTO {
 	private Long id;
-
 	private String description;
+//	private ToDoDomain myToDo;
 
 	public TaskDTO() {
 		super();
@@ -31,6 +33,5 @@ public class TaskDTO {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
-	
+
 }

@@ -39,7 +39,7 @@ public class ToDoServices {
 		return resultList;
 	}
 
-	//READ one house
+	//READ one todo 
 	public ToDoDTO readOne(Long id) {
 		return mapToDTO(this.repo.findById(id).orElseThrow());
 	}
