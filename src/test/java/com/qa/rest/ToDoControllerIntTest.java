@@ -17,15 +17,15 @@ import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilde
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.persistence.domain.TaskDomain;
-import com.qa.persistence.dtos.TaskDTO;
+import com.qa.persistence.domain.ToDoDomain;
+import com.qa.persistence.dtos.ToDoDTO;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "test")
-public class TaskControllerIntTest {
+public class ToDoControllerIntTest {
 	@Autowired
 	private MockMvc mock;
 	@Autowired
@@ -35,8 +35,8 @@ public class TaskControllerIntTest {
 
 	private final int ID = 1;
 
-	private TaskDTO mapToDTO(TaskDomain model) {
-		return this.mapper.map(model, TaskDTO.class);
+	private ToDoDTO mapToDTO(ToDoDomain model) {
+		return this.mapper.map(model, ToDoDTO.class);
 	}
 
 	// POST/CREATE
@@ -44,14 +44,15 @@ public class TaskControllerIntTest {
 	public void create() throws Exception {
 		// Resources
 
-		TaskDomain contentBody = new TaskDomain("washing up", null);
-		TaskDTO expectedResult = mapToDTO(contentBody);
+		ToDoDomain contentBody = new ToDoDomain(null, "shopping list",null);
+		ToDoDTO expectedResult = mapToDTO(contentBody);
 		expectedResult.setId(4L);
 
 		// Set up request
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
-				.request(HttpMethod.POST, "http://localhost:8080/task/create").contentType(MediaType.APPLICATION_JSON)
-				.content(jsonifier.writeValueAsString(contentBody)).accept(MediaType.APPLICATION_JSON);
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.POST, "http://localhost:8080/todo/create")
+				.contentType(MediaType.APPLICATION_JSON)
+				.content(jsonifier.writeValueAsString(contentBody))
+				.accept(MediaType.APPLICATION_JSON);
 
 		// set up expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isCreated();
@@ -61,14 +62,20 @@ public class TaskControllerIntTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-//		//READ one TASK
+	// READ ALL todo
 	@Test
-	public void readTask() throws Exception {
+	public void readAll() throws Exception {
+
+	}
+
+//		//READ one todo
+	@Test
+	public void readToDo() throws Exception {
 		// Resources
-		TaskDTO expectedResult = new TaskDTO(1L, "Tomato");
+		int id2 = 3;
+		ToDoDTO expectedResult = new ToDoDTO(1L, "Shopping List");
 		// Set up request
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,
-				"http://localhost:8080/task/read/" + ID);
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,"http://localhost:8080/todo/read/"+ID);
 
 		// set up expectations
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
@@ -80,27 +87,24 @@ public class TaskControllerIntTest {
 
 	// DELETE
 	@Test
-	public void removeTask() throws Exception {
-		// resources
-
-		// mock request
-		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.DELETE,
-				"http://localhost:8080/task/delete/" + ID);
-		// assertchecks
+	public void removeToDo() throws Exception {
+		//resources
+		
+		//mock request
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
+				.request(HttpMethod.DELETE, "http://localhost:8080/todo/delete/"+ID);
+		//assertchecks
 		ResultMatcher matchStatus = MockMvcResultMatchers.status().isNoContent();
-
-		// perform/verfiy
+		
+//		ResultMatcher matchContent = MockMvcResultMatchers.content().json(this.jsonifier.writeValueAsString(OBJECT YOU WANT TO COMPARE)); CHECKS CONTENTS OF WHAT YOU GET BACK
+		
+		//perform/verfiy
 		this.mock.perform(mockRequest).andExpect(matchStatus);
 	}
 
 	// PUT/UPDATE
 	@Test
 	public void update() throws Exception {
-
-	}
-	// READ ALL TASKS
-	@Test
-	public void readAll() throws Exception {
 
 	}
 }

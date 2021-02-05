@@ -1,8 +1,8 @@
 INSERT INTO TO_DO_DOMAIN(TITLE)
 VALUES
 ('Shopping List'),
-('House Chores');
-
+('House Chores'),
+('Bucket List');
 
 
 
