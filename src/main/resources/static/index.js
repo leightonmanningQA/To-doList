@@ -8,11 +8,22 @@ const createtask3 = document.querySelector("#task3input");
 
 const todoidbox = document.querySelector("#inputid")
 
+const showtasktext = document.querySelector("#showTask");
+
 const printIDToScreen = (id) => {
-    let todo = document.createElement("h3"); // <p> </p>
-    let text = document.createTextNode(`${id} THIS IS YOUR TODOLIST ID USE BELOW`); // username
-    todo.appendChild(text); // <p> username </p>
+    let todo = document.createElement("h3"); 
+    let text = document.createTextNode(`${id} THIS IS YOUR TODOLIST ID USE BELOW`); 
+    todo.appendChild(text); 
     showidtext.appendChild(todo);
+}
+const printTaskToScreen = () => {
+    let task = document.createElement("h4"); 
+    let text = document.createTextNode(`Successfully added! Now head to create or read.`); 
+    task.appendChild(text); 
+    showtasktext.appendChild(task);
+}
+const deleteIDToScreen = () => {
+    showidtext.remove("h3");
 }
 
 const createToDo = () => {
@@ -33,7 +44,10 @@ const createToDo = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
-                    printIDToScreen(info.id);
+            // deleteIDToScreen();
+            printIDToScreen(info.id);
+            
+
 
         })
         .catch(err => console.error('ERROR!' + err));
@@ -68,6 +82,7 @@ const createTask = () => {
         .then(response => response.json())
         .then(info => {
             console.log(info);
+            printTaskToScreen();
         })
         .catch(err => console.error('ERROR!' + err));
         fetch("http://localhost:8082/task/create", {
@@ -81,6 +96,7 @@ const createTask = () => {
             .then(response => response.json())
             .then(info => {
                 console.log(info);
+                
             })
             .catch(err => console.error('ERROR!' + err));
             fetch("http://localhost:8082/task/create", {
@@ -94,6 +110,7 @@ const createTask = () => {
                 .then(response => response.json())
                 .then(info => {
                     console.log(info);
+                    
                 })
                 .catch(err => console.error('ERROR!' + err));
         

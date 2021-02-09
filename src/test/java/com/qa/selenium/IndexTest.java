@@ -1,5 +1,8 @@
 package com.qa.selenium;
 
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.util.List;
 
 import org.junit.jupiter.api.AfterAll;
@@ -17,7 +20,7 @@ public class IndexTest {
 	private static List<WebElement> targList;
 	
 	@BeforeAll
-	public void beforeAll() {
+	public static void beforeAll() {
 		//system.property
 		System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
 		//driver
@@ -26,15 +29,25 @@ public class IndexTest {
 	}
 	
 	@AfterAll
-	public  void afterAll() {
+	public static void afterAll() {
 		//closes the chrome driver
 		driver.quit();
 	}
 	
-//	@Test
+	@Test
 	public void indexcreate() {
+		//Given that i can access the index page
 		driver.get(URL);
-		targ=driver.findElement(By.xpath(""));
+		//when i enter the title for a new todolist
+		targ=driver.findElement(By.xpath("//*[@id=\"ToDoTitle\"]"));
+		targ.sendKeys("House Chores");
+		// and click the button
+		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[1]/button"));
 		targ.click();
+		//then the text should appear with an ID that lets us know its created.
+		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div[2]/h3"));
+		boolean result = targ.isDisplayed();
+		
+		assertEquals(true,result);
 	}
 }
