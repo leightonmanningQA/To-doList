@@ -28,7 +28,7 @@ const readAllTodo = () => {
                 for(let todos of infofromserver){
                     printTodoscreen(todos.id);
                     printTodoscreen(todos.title);
-                    var myJSON = JSON.stringify(todos.taskList);
+                    let myJSON = JSON.stringify(todos.taskList);
                     printTodoscreen(myJSON)
                     
                     
@@ -40,8 +40,9 @@ const readAllTodo = () => {
     })
 }
 
-const readTodo = (id) => {
-    fetch("http://localhost:8082/todo/read/"+id)
+const readTodo = () => {
+    const searchid = todoIdTextbox.value;
+    fetch("http://localhost:8082/todo/read/"+searchid)
     .then((response) => {
         // check that the response is OK (i.e. 200)
         if(response.status !== 200){
@@ -53,14 +54,10 @@ const readTodo = (id) => {
             response.json().then((infofromserver) =>{
                 console.log(infofromserver);
                 console.log(infofromserver.data); // key - return array(6)
-                for(let todos of infofromserver){
-                    printTodoscreen(todos.id);
-                    printTodoscreen(todos.title);
-                    var myJSON = JSON.stringify(todos.taskList);
+                    printTodoscreen(infofromserver.id);
+                    printTodoscreen(infofromserver.title);
+                    let myJSON = JSON.stringify(infofromserver.taskList);
                     printTodoscreen(myJSON)
-                    
-                    
-                }
             })
         }
     }).catch((err) => {
