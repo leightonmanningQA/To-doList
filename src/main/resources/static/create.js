@@ -16,7 +16,8 @@ const todoupdateid= document.querySelector("#inputid2")
 const todoupdatetitle= document.querySelector("#todoinput2")
 const todoupdateresult= document.querySelector("#showUpdate")
 
-
+showTaskText
+showUpdateTask
 
 const printIDToScreen = (id,title) => {
     let todo = document.createElement("h4"); 
@@ -28,13 +29,13 @@ const printTaskToScreen = () => {
     let task = document.createElement("h4"); 
     let text = document.createTextNode(`Successfully added! Add more or head to read!`); 
     task.appendChild(text); 
-    taskdisplayupdate.appendChild(task);
+    taskfinishtext.appendChild(task);
 }
 const printUpdatedTask = (id,description) => {
     let task = document.createElement("h4"); 
     let text = document.createTextNode(`Id: ${id}   New Description: ${description}`); 
     task.appendChild(text); 
-    taskfinishtext.appendChild(task);
+    taskdisplayupdate.appendChild(task);
 }
 const printUpdatedToDo = (id,description) => {
     let task = document.createElement("h4"); 
