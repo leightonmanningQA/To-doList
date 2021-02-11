@@ -30,6 +30,10 @@ public class ToDoDTO {
 		// TODO Auto-generated constructor stub
 	}
 
+	public ToDoDTO(String string) {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Long getId() {
 		return id;
 	}
