@@ -1,5 +1,7 @@
 package com.qa.rest;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -96,11 +98,37 @@ public class TaskControllerIntTest {
 	// PUT/UPDATE
 	@Test
 	public void update() throws Exception {
+		//Resources
+		TaskDomain body = new TaskDomain(2L,"Hoovering", null);
+		TaskDTO expectedResult = this.mapToDTO(body);
+		// Mock Request
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders
+				.request(HttpMethod.PUT, "http://localhost:8080/task/update/2").contentType(MediaType.APPLICATION_JSON)
+				.content(jsonifier.writeValueAsString(body)).accept(MediaType.APPLICATION_JSON);
+		//Assert Checks
+		ResultMatcher matchStatus = MockMvcResultMatchers.status().isAccepted();
+		ResultMatcher matchContent = MockMvcResultMatchers.content().json(jsonifier.writeValueAsString(expectedResult));
+		//Perform
+		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
+		
 
 	}
 	// READ ALL TASKS
 	@Test
 	public void readAll() throws Exception {
-
+		//Resources
+		List<TaskDTO> result = List.of(
+				new TaskDTO(1L, "Tomato"),
+				new TaskDTO(2L, "Potato"),
+				new TaskDTO(3L, "Mop Floors"));
+		// Mock request
+		MockHttpServletRequestBuilder mockRequest = MockMvcRequestBuilders.request(HttpMethod.GET,
+				"http://localhost:8080/task/readAll/");
+		// Assert checks
+		ResultMatcher matchStatus = MockMvcResultMatchers.status().isOk();
+		ResultMatcher matchContent = MockMvcResultMatchers.content().json(jsonifier.writeValueAsString(result));
+		//Perform
+		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
+		
 	}
 }
