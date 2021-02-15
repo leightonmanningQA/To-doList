@@ -63,7 +63,7 @@ public class TaskControllerIntTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-//		//READ one TASK
+
 	@Test
 	public void readTask() throws Exception {
 		// Resources

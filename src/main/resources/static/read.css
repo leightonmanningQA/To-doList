@@ -1,0 +1,13 @@
+#showToDoAll {
+    list-style-position: inside;
+  }
+#showToDoAll ::marker {
+    color: blue;
+  }
+
+#showToDoOne {
+    list-style-position: inside;
+  }
+#showToDoOne ::marker {
+    color: blue;
+  }
