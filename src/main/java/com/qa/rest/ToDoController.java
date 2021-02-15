@@ -37,13 +37,13 @@ public class ToDoController {
 		return new ResponseEntity<ToDoDTO>(this.service.create(todo), HttpStatus.CREATED);
 	}
 
-	// READ ALL todo
+	// READ ALL TODOS
 	@GetMapping("/readAll")
 	public ResponseEntity<List<ToDoDTO>> readAll() {
 		return new ResponseEntity<List<ToDoDTO>>(this.service.readAll(), HttpStatus.OK);
 	}
 	
-//	//READ one todo
+//	//READ one TODOS
 	@GetMapping("/read/{id}")
 	public ResponseEntity<ToDoDTO> readToDo(@PathVariable("id")Long id) {
 		return ResponseEntity.ok(this.service.readOne(id));

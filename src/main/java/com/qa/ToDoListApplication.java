@@ -8,8 +8,8 @@ import org.springframework.context.ApplicationContext;
 public class ToDoListApplication {
 
 	public static void main(String[] args) {
-		ApplicationContext beanBag = SpringApplication.run(ToDoListApplication.class, args);
-		System.out.println(beanBag.getBean("serverStart", String.class));
+		SpringApplication.run(ToDoListApplication.class, args);
+		
 	}
 
 }

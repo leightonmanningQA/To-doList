@@ -19,7 +19,7 @@ import com.qa.persistence.dtos.ToDoDTO;
 import com.qa.persistence.repos.ToDoRepo;
 
 @SpringBootTest
-public class ToDoServicesUnitTest {
+ class ToDoServicesUnitTest {
 	
 	@MockBean
 	private ModelMapper mapper;
@@ -34,7 +34,7 @@ public class ToDoServicesUnitTest {
 		return this.mapper.map(model, ToDoDTO.class);
 	}
 	@Test
-	public void create() {
+	 void create() {
 		// RESOURCE
 		ToDoDomain TEST_TODO = new ToDoDomain(1L, "chores",null);
 		ToDoDTO TEST_DTO = new ToDoDTO(1L,"chores",null);
@@ -47,15 +47,15 @@ public class ToDoServicesUnitTest {
 		ToDoDTO result = this.service.create(TEST_TODO);
 
 		// ASSERTIONS
-		Assertions.assertThat(result).isNotNull(); //CHECKS WHETHER WE ARE HANDLING NOT NULL OBJECT.
-		Assertions.assertThat(result).isEqualTo(TEST_DTO);
+		Assertions.assertThat(result).isNotNull().isEqualTo(TEST_DTO); //CHECKS WHETHER WE ARE HANDLING NOT NULL OBJECT.
+		
 
 		
 		Mockito.verify(this.mockrepo, Mockito.times(1)).save(Mockito.any(ToDoDomain.class));
 		Mockito.verify(this.mapper, Mockito.times(1)).map(TEST_TODO, ToDoDTO.class);
 	}
 	@Test
-	public void readOne() {
+	 void readOne() {
 		// RESOURCE
 
 		ToDoDomain TEST_TODO = new ToDoDomain(1L, "chores",null);
@@ -75,7 +75,7 @@ public class ToDoServicesUnitTest {
 		Mockito.verify(this.mockrepo, Mockito.times(1)).findById(1L);
 	}
 	@Test
-	public void removeToDo() {
+	 void removeToDo() {
 		Long toDoId = 1L;
 		boolean exists=false;
 		
@@ -92,7 +92,7 @@ public class ToDoServicesUnitTest {
 		
 	}
 	@Test
-	public void update() {
+	 void update() {
 		// RESOURCES
 		ToDoDomain TEST_TODO = new ToDoDomain(1L, "Chore List", null);
 		ToDoDomain UPDATEDTODO = new ToDoDomain(1L, "Shopping", null);
@@ -107,15 +107,14 @@ public class ToDoServicesUnitTest {
 		ToDoDTO RESULT = this.service.update(1L, UPDATEDTODO);
 
 		// Assertions
-		Assertions.assertThat(RESULT).isNotNull();
-		Assertions.assertThat(RESULT).isEqualTo(EXPECTED);
+		Assertions.assertThat(RESULT).isNotNull().isEqualTo(EXPECTED);
 		Assertions.assertThat(RESULT).usingRecursiveComparison().isEqualTo(EXPECTED);
 		Mockito.verify(this.mockrepo, Mockito.times(1)).save(Mockito.any(ToDoDomain.class));
 		Mockito.verify(this.mapper, Mockito.times(1)).map(UPDATEDTODO, ToDoDTO.class);
 
 	}
 	@Test
-	public void readAll() {
+	 void readAll() {
 		//RESOURCES
 		ToDoDomain TEST_TODO = new ToDoDomain(1L,"Mopping", null);
 		ToDoDomain TEST_TODO2 = new ToDoDomain(2L,"Hoovering", null);

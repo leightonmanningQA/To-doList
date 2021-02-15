@@ -27,7 +27,7 @@ import com.qa.persistence.dtos.TaskDTO;
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "test")
-public class TaskControllerIntTest {
+ class TaskControllerIntTest {
 	@Autowired
 	private MockMvc mock;
 	@Autowired
@@ -43,7 +43,7 @@ public class TaskControllerIntTest {
 
 	// POST/CREATE
 	@Test
-	public void create() throws Exception {
+	 void create() throws Exception {
 		// Resources
 
 		TaskDomain contentBody = new TaskDomain("washing up", null);
@@ -63,9 +63,9 @@ public class TaskControllerIntTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-//		//READ one TASK
+
 	@Test
-	public void readTask() throws Exception {
+	 void readTask() throws Exception {
 		// Resources
 		TaskDTO expectedResult = new TaskDTO(1L, "Tomato");
 		// Set up request
@@ -82,7 +82,7 @@ public class TaskControllerIntTest {
 
 	// DELETE
 	@Test
-	public void removeTask() throws Exception {
+	 void removeTask() throws Exception {
 		// resources
 
 		// mock request
@@ -97,7 +97,7 @@ public class TaskControllerIntTest {
 
 	// PUT/UPDATE
 	@Test
-	public void update() throws Exception {
+	 void update() throws Exception {
 		//Resources
 		TaskDomain body = new TaskDomain(2L,"Hoovering", null);
 		TaskDTO expectedResult = this.mapToDTO(body);
@@ -115,7 +115,7 @@ public class TaskControllerIntTest {
 	}
 	// READ ALL TASKS
 	@Test
-	public void readAll() throws Exception {
+	 void readAll() throws Exception {
 		//Resources
 		List<TaskDTO> result = List.of(
 				new TaskDTO(1L, "Tomato"),

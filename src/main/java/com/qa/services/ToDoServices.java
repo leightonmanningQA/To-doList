@@ -39,14 +39,14 @@ public class ToDoServices {
 		return resultList;
 	}
 
-	//READ one todo 
+	//READ one TODOS
 	public ToDoDTO readOne(Long id) {
 		return mapToDTO(this.repo.findById(id).orElseThrow());
 	}
 	
 	// DELETE
 	public boolean removeToDo(Long id) {
-		//remove todo and return it
+		
 		this.repo.deleteById(id);
 		boolean exists = this.repo.existsById(id);
 		return !exists;
@@ -54,9 +54,10 @@ public class ToDoServices {
 	
 	// PUT/UPDATE
 	public ToDoDTO update(Long id, ToDoDomain newDetails) {
-	  this.repo.findById(id).orElseThrow();
+	  this.repo.findById(id);
+
 	  
-	  //todo target
+	  
 	  newDetails.setId(id);
 	  
 	  return this.mapToDTO(this.repo.save(newDetails));

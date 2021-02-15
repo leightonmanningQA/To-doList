@@ -35,11 +35,11 @@ const printTodoscreen = (id, title, taskList) => {
 
 }
 
-const printAllTodoscreen = (id, title, taskList) => {
+const printAllTodoscreen = (id, title,taskid, taskList) => {
     let todo = document.createElement("h3"); // <p> </p>
     let text = document.createTextNode(`${id}. ${title}:`);
     let todo1 = document.createElement("h4");
-    let text1 = document.createTextNode(`${taskList}`);
+    let text1 = document.createTextNode(`${taskid}. ${taskList}`);
     todo1.appendChild(text1);
     todo.appendChild(text); // <p> username </p>
     showAllToDo.appendChild(todo);
@@ -61,7 +61,48 @@ const printDelete2 = () => {
 }
 
 
+function readAllData(data) {
+    let listOfToDos = document.createElement("ul");
+    for (let i = 0; i < data.length; i++) {
+        let id = document.createElement("li")
+        let title = document.createElement("li")
+        let taskList = document.createElement("ul")
 
+        for (let j = 0; j < data[i].taskList.length; j++) {
+            let id = document.createElement("li")
+            let description = document.createElement("li")
+
+            description.innerText = `ID: ${data[i].taskList[j].id} Description: ${data[i].taskList[j].description}`
+            taskList.appendChild(description)
+        }
+        title.innerText = `ID: ${data[i].id} Title: ${data[i].title}`;
+        listOfToDos.appendChild(title)
+        listOfToDos.appendChild(taskList)
+
+    }
+    showAllToDo.appendChild(listOfToDos);
+}
+function readAllData1(data) {
+    let listOfToDos1 = document.createElement("ul");
+    
+        let id = document.createElement("li")
+        let title = document.createElement("li")
+        let taskList = document.createElement("ul")
+
+        for (let j = 0; j < data.taskList.length; j++) {
+            let id = document.createElement("li")
+            let description = document.createElement("li")
+
+            description.innerText = `ID: ${data.taskList[j].id} Description: ${data.taskList[j].description}`
+            taskList.appendChild(description)
+        }
+        title.innerText = `ID: ${data.id} Title: ${data.title}`;
+        listOfToDos1.appendChild(title)
+        listOfToDos1.appendChild(taskList)
+
+    
+    showOneTodo.appendChild(listOfToDos1);
+}
 
 const readAllTodo = () => {
     fetch("http://localhost:8082/todo/readAll")
@@ -73,21 +114,19 @@ const readAllTodo = () => {
                 console.log(response);
                 console.log(`response is OK (200)`);
                 //json-ify it (which returns a promise)
-                response.json().then((infofromserver) => {
-                    console.log(infofromserver);
-                    console.log(infofromserver.data); // key - return array(6)
-                    for (let todos of infofromserver) {
-                        let myJSON = JSON.stringify(todos.taskList);
-                        deleteTodoscreen();
-                        printAllTodoscreen(todos.id, todos.title, myJSON);
-
-                    }
+                response.json().then((data) => {
+                    console.log(data);
+                    
+                    readAllData(data)
                 })
             }
         }).catch((err) => {
             console.error(err);
         })
 }
+
+
+
 
 const readTodo = () => {
     const searchid = todoIdTextbox.value;
@@ -100,11 +139,9 @@ const readTodo = () => {
                 console.log(response);
                 console.log(`response is OK (200)`);
                 //json-ify it (which returns a promise)
-                response.json().then((infofromserver) => {
-                    console.log(infofromserver);
-                    console.log(infofromserver.data);
-                    let myJSON = JSON.stringify(infofromserver.taskList);
-                    printTodoscreen(infofromserver.id, infofromserver.title, myJSON);
+                response.json().then((info) => {
+                    console.log(info);
+                    readAllData1(info)
                 })
             }
 
@@ -112,6 +149,11 @@ const readTodo = () => {
             console.error(err);
         })
 }
+
+
+
+
+
 
 const deleteToDo = () => {
     const ID = deleteTodoID.value;

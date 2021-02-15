@@ -16,7 +16,7 @@ import com.qa.persistence.dtos.TaskDTO;
 import com.qa.persistence.repos.TaskRepo;
 
 @SpringBootTest
-public class TaskServicesUnitTest {
+ class TaskServicesUnitTest {
 
 	@MockBean
 	private ModelMapper mapper;
@@ -32,7 +32,7 @@ public class TaskServicesUnitTest {
 	}
 
 	@Test
-	public void create() {
+	 void create() {
 		// RESOURCE
 		TaskDomain TEST_TASK = new TaskDomain(1L, "washingup", null);
 		TaskDTO TEST_DTO = new TaskDTO(1L, "washingup");
@@ -45,15 +45,15 @@ public class TaskServicesUnitTest {
 		TaskDTO result = this.service.create(TEST_TASK);
 
 		// ASSERTIONS
-		Assertions.assertThat(result).isNotNull(); // CHECKS WHETHER WE ARE HANDLING NOT NULL OBJECT.
-		Assertions.assertThat(result).isEqualTo(TEST_DTO);
+		Assertions.assertThat(result).isNotNull().isEqualTo(TEST_DTO); // CHECKS WHETHER WE ARE HANDLING NOT NULL OBJECT.
+		
 
 		Mockito.verify(this.mockrepo, Mockito.times(1)).save(Mockito.any(TaskDomain.class));
 		Mockito.verify(this.mapper, Mockito.times(1)).map(TEST_TASK, TaskDTO.class);
 	}
 
 	@Test
-	public void readOne() {
+	 void readOne() {
 		// RESOURCE
 
 		TaskDomain TEST_TASK = new TaskDomain(1L, "washingup", null);
@@ -74,7 +74,7 @@ public class TaskServicesUnitTest {
 	}
 
 	@Test
-	public void removeTask() {
+	 void removeTask() {
 		// RESOURCES
 		Long taskId = 1L;
 
@@ -85,15 +85,15 @@ public class TaskServicesUnitTest {
 		boolean RESULT = this.service.removeTask(taskId);
 
 		// ASSERTIONS
-		Assertions.assertThat(RESULT).isNotNull();
-		Assertions.assertThat(RESULT).isEqualTo(true);
+	
+		Assertions.assertThat(RESULT).isTrue();
 		Mockito.verify(this.mockrepo, Mockito.times(1)).existsById(taskId);
 		Mockito.verify(this.mockrepo, Mockito.times(1)).deleteById(taskId);
 
 	}
 
 	@Test
-	public void update() {
+	 void update() {
 		// RESOURCES
 		TaskDomain TEST_TASK = new TaskDomain(1L, "Mopping", null);
 		TaskDomain UPDATEDTEST_TASK = new TaskDomain(1L, "Hoovering", null);
@@ -108,15 +108,15 @@ public class TaskServicesUnitTest {
 		TaskDTO RESULT = this.service.update(1L, UPDATEDTEST_TASK);
 
 		// Assertions
-		Assertions.assertThat(RESULT).isNotNull();
-		Assertions.assertThat(RESULT).isEqualTo(EXPECTED);
+		Assertions.assertThat(RESULT).isNotNull()
+		.isEqualTo(EXPECTED);
 		Assertions.assertThat(RESULT).usingRecursiveComparison().isEqualTo(EXPECTED);
 		Mockito.verify(this.mockrepo, Mockito.times(1)).save(Mockito.any(TaskDomain.class));
 		Mockito.verify(this.mapper, Mockito.times(1)).map(UPDATEDTEST_TASK, TaskDTO.class);
 
 	}
 	@Test
-	public void readAll() {
+	 void readAll() {
 		//RESOURCES
 		TaskDomain TEST_TASK = new TaskDomain(1L,"Mopping", null);
 		TaskDomain TEST_TASK2 = new TaskDomain(2L,"Hoovering", null);
