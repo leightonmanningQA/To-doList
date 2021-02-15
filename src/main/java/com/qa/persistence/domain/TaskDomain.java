@@ -18,7 +18,7 @@ public class TaskDomain {
 
 	public TaskDomain() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public TaskDomain(Long id, String description, ToDoDomain myToDo) {

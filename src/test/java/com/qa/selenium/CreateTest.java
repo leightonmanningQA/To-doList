@@ -13,7 +13,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
-public class CreateTest {
+class CreateTest {
 	private static RemoteWebDriver driver;
 	private final String URL = "http://localhost:8082/create.html";
 	private static WebElement targ;
@@ -34,7 +34,7 @@ public class CreateTest {
 		driver.quit();
 	}
 	@Test
-	public void createToDo() {
+	 void createToDo() {
 		//Given that i can access the index page
 		driver.get(URL);
 		//when i enter the title for a new todolist
@@ -50,7 +50,7 @@ public class CreateTest {
 		assertEquals(true,result);
 	}
 	@Test
-	public void createTask() {
+	void createTask() {
 		//Given that i can access the index page
 		driver.get(URL);
 		//when i enter the descriptions for the tasks
@@ -74,7 +74,7 @@ public class CreateTest {
 		assertEquals("Successfully added! Add more or head to read!",result);
 	}
 	@Test
-	public void updateToDo() {
+	void updateToDo() {
 		//Given that i can access the index page
 		driver.get(URL);
 		//when i enter the id for a todolist
@@ -96,7 +96,7 @@ public class CreateTest {
 	}
 	
 	@Test
-	public void updateTask() {
+	 void updateTask() {
 		//Given that i can access the index page
 		driver.get(URL);
 		//when i enter the title for a new task

@@ -22,7 +22,7 @@ import com.qa.services.TaskServices;
 @RequestMapping("/task")
 public class TaskController {
 
-	private Long id = 0L;
+	
 	private TaskServices service;
 //
 	@Autowired

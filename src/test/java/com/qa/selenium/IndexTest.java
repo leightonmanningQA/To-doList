@@ -19,7 +19,7 @@ import com.relevantcodes.extentreports.ExtentReports;
 import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
-public class IndexTest {
+ class IndexTest {
 	private static RemoteWebDriver driver;
 	private final String URL = "http://localhost:8082/index.html";
 	private static WebElement targ;
@@ -56,7 +56,7 @@ public class IndexTest {
 	}
 	
 	@Test
-	public void indexcreateToDo() {
+	 void indexcreateToDo() {
 		
 		test=report.startTest("Create A To-do List");
 		
@@ -82,7 +82,7 @@ public class IndexTest {
 	}
 	
 	@Test
-	public void indexcreateTask() {
+	 void indexcreateTask() {
 		test=report.startTest("Create Tasks");
 		//Given that i can access the index page
 		driver.get(URL);

@@ -54,7 +54,7 @@ public class TaskServices {
 
 	// PUT/UPDATE
 	public TaskDTO update(Long id, TaskDomain newDetails) {
-		this.repo.findById(id).orElseThrow();
+		this.repo.findById(id);
 
 		// task target
 		newDetails.setId(id);

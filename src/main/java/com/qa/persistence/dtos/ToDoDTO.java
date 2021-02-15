@@ -23,15 +23,15 @@ public class ToDoDTO {
 
 	public ToDoDTO() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ToDoDTO(long l, String string) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public ToDoDTO(String string) {
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	public Long getId() {

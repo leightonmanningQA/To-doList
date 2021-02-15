@@ -31,7 +31,7 @@ import com.qa.persistence.dtos.ToDoDTO;
 @Sql(scripts = { "classpath:schema-test.sql",
 		"classpath:data-test.sql" }, executionPhase = ExecutionPhase.BEFORE_TEST_METHOD)
 @ActiveProfiles(profiles = "test")
-public class ToDoControllerIntTest {
+ class ToDoControllerIntTest {
 	@Autowired
 	private MockMvc mock;
 	@Autowired
@@ -47,7 +47,7 @@ public class ToDoControllerIntTest {
 
 	// POST/CREATE
 	@Test
-	public void create() throws Exception {
+	 void create() throws Exception {
 		// Resources
 
 		ToDoDomain contentBody = new ToDoDomain(null, "shopping list", null);
@@ -67,9 +67,9 @@ public class ToDoControllerIntTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-	// READ ALL todo
+	// READ ALL TODOS
 	@Test
-	public void readAll() throws Exception {
+	 void readAll() throws Exception {
 		// Resources
 
 		ToDoDTO expectedResult = new ToDoDTO(1L, "Shopping List",
@@ -91,9 +91,9 @@ public class ToDoControllerIntTest {
 		this.mock.perform(mockRequest).andExpect(matchStatus).andExpect(matchContent);
 	}
 
-//		//READ one todo
+//		//READ one TODOS
 	@Test
-	public void readToDo() throws Exception {
+	 void readToDo() throws Exception {
 		// Resources
 		
 		ToDoDTO expectedResult = new ToDoDTO(1L, "Shopping List",
@@ -112,7 +112,7 @@ public class ToDoControllerIntTest {
 
 	// DELETE
 	@Test
-	public void removeToDo() throws Exception {
+	 void removeToDo() throws Exception {
 		// resources
 
 		// mock request
@@ -129,7 +129,7 @@ public class ToDoControllerIntTest {
 
 	// PUT/UPDATE
 	@Test
-	public void update() throws Exception {
+	 void update() throws Exception {
 		// Resources
 		ToDoDomain body = new ToDoDomain(2L, "NewTodoList", null);
 		ToDoDTO expectedResult = this.mapToDTO(body);

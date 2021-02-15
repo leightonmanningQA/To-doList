@@ -13,7 +13,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import java.util.concurrent.TimeUnit;
 
-public class ReadTest {
+ class ReadTest {
 	private static RemoteWebDriver driver;
 	private final String URL = "http://localhost:8082/read.html";
 	private static WebElement targ;
@@ -33,7 +33,7 @@ public class ReadTest {
 		driver.quit();
 	}
 	@Test
-	public void readAllTodo() {
+	 void readAllTodo() {
 		//Given that i can access the index page
 		driver.get(URL);
 		//and click the read all button
@@ -41,13 +41,13 @@ public class ReadTest {
 		targ.click();
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		//then the text should appear with all the current to-do lists.
-		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/h3[1]"));
+		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/ul"));
 		boolean result = targ.isDisplayed();
 		
 		assertEquals(true,result);
 	}
 	@Test
-	public void readOneTodo() {
+	 void readOneTodo() {
 		//Given that i can access the read page
 		driver.get(URL);
 		//and enter the ID of the To-Do list i want to read.
@@ -58,13 +58,13 @@ public class ReadTest {
 		targ.click();
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 		//then the text should appear with the to-do list you searched in this case 2.
-		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/h3[1]"));
+		targ=driver.findElement(By.xpath("/html/body/div[2]/div/div[2]/div/ul"));
 		boolean result = targ.isDisplayed();
 		
 		assertEquals(true,result);
 	}
 	@Test
-	public void deleteTodo() {
+	 void deleteTodo() {
 		//Given that i can access the read page
 		driver.get(URL);
 		//and enter the ID of the To-Do list i want to delete.
@@ -81,7 +81,7 @@ public class ReadTest {
 		assertEquals("Successfully Deleted",result);
 	}
 	@Test
-	public void deleteTask() {
+	 void deleteTask() {
 		//Given that i can access the read page
 		driver.get(URL);
 		//and enter the ID of the Task i want to delete.
