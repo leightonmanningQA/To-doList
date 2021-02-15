@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ToDolistHome</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">To-do</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-link " href="index.html">Home</a>
+          <a class="nav-link" href="read.html">Read</a>
+          <a class="nav-link active" aria-current="page" href="create.html">Create</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+
+      </div>
+      <div class="col-sm">
+        <h1 class="display-1">My To-Do List Creator</h1>
+      </div>
+      <div class="col-sm">
+
+      </div>
+    </div>
+  </div>
+  </br>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+        <h3>Create a new To-Do list</h3>
+        <div class="input-group mb-3" required>
+          <input type="text" class="form-control" placeholder="To-Do List title" id="ToDoTitle"
+            aria-label="To-Do list title" aria-describedby="button-addon2" required>
+          <button class="btn btn-outline-primary" type="button" onclick="createToDo()"
+            id="button-addon2">Create</button>
+          <br>
+        </div>
+
+      </div>
+      <div id="showID"></div>
+      <div class="col-sm">
+        <h3>Create new Tasks</h3>
+
+        <input type="text" class="form-control" id="task1input" placeholder="Task #1">
+        </br>
+        <input type="text" class="form-control" id="task2input" placeholder="Task #2">
+        </br>
+        <input type="text" class="form-control" id="task3input" placeholder="Task #3">
+
+        <label for="inputid" class="col-form-label">Todo list ID</label>
+        <input type="number" id="inputid" class="form-control" aria-describedby="passwordHelpInline">
+        </br>
+        <button type="button" onclick="createTask()" class="btn btn-primary btn-lg">Create Tasks</button>
+        <div id="showTaskText"></div>
+      </div>
+      <div class="col-sm">
+        <h3>Update To Do Lists</h3>
+        <label for="inputid" class="col-form-label">Todo list ID</label>
+        <input type="number" id="inputid2" class="form-control" aria-describedby="passwordHelpInline">
+        </br>
+        <input type="text" class="form-control" id="todoinput2" placeholder="New To-do List Title">
+        </br>
+        <button type="button" onclick="updateToDo()" id="updateToDobtn" class="btn btn-primary btn-lg">Update
+          To-Do</button>
+        <div id="showUpdate"></div>
+        <h3>Update Tasks</h3>
+        <label for="inputid" class="col-form-label">Task ID</label>
+        <input type="number" id="inputtaskid" class="form-control" aria-describedby="passwordHelpInline">
+        <br>
+        <input type="text" class="form-control" id="updatetaskdesc" placeholder="New Task Description">
+        <br>
+        <input type="text" class="form-control" id="updatetasktodoid" placeholder="New/Existing To Do List ID">
+        </br>
+        <button type="button" onclick="updateTask()" id="updateTaskbtn"class="btn btn-primary btn-lg">Update Task</button>
+        <div id="showUpdateTask"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm">
+      </div>
+      <div class="col-sm">
+
+        <div class="row g-3 align-items-center">
+          <div class="col-auto">
+
+          </div>
+          <div class="col-auto">
+
+
+          </div>
+
+        </div>
+        </br>
+
+        </br>
+        <div id="showTask"></div>
+      </div>
+      <div class="col-sm">
+
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+    crossorigin="anonymous"></script>
+  <script src="create.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+com\qa\ToDoListApplication.class
+com\qa\persistence\dtos\ToDoDTO.class
+com\qa\rest\TaskController.class
+com\qa\persistence\domain\TaskDomain.class
+com\qa\config\AppConfig.class
+com\qa\persistence\repos\TaskRepo.class
+com\qa\persistence\repos\ToDoRepo.class
+com\qa\services\ToDoServices.class
+com\qa\rest\ToDoController.class
+com\qa\persistence\domain\ToDoDomain.class
+com\qa\persistence\dtos\TaskDTO.class
+com\qa\services\TaskServices.class

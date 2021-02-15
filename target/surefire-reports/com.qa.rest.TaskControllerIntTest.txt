@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.qa.rest.TaskControllerIntTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 7.556 s - in com.qa.rest.TaskControllerIntTest
