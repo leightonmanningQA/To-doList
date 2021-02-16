@@ -1,0 +1,8 @@
+com\qa\selenium\IndexTest.class
+com\qa\selenium\ReadTest.class
+com\qa\rest\ToDoControllerIntTest.class
+com\qa\rest\TaskControllerIntTest.class
+com\qa\ToDoListApplicationTests.class
+com\qa\selenium\CreateTest.class
+com\qa\services\TaskServicesUnitTest.class
+com\qa\services\ToDoServicesUnitTest.class
