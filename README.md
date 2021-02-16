@@ -1,5 +1,5 @@
 
-Coverage: N/A
+Coverage: 93.9
 # To-Do List Web Application 
 
 This is an application that a user can interact with via a working website.. It is a To-Do List web application that can add different To-Do lists and tasks to be then displayed and completed. Both the tasks and the To-Do lists are stored inside a database. 
