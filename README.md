@@ -115,11 +115,12 @@ The chromedriver.exe is in the src/main/resources file and it may need changing 
 
 ## Deployment
 
-Open command line in the project folder
-Type mvn clean , we do this so that we can remove old builds of our code before rebuilding it again.
-Once the target folder has been removed you want to type mvn package, This will package all the source code in our Java project into the .jar file
-After this the target file will return. Navigate to that folder with the command cd target
-Run the program with java -jar ToDoList-0.0.1-SNAPSHOT.jar
+Add additional notes about how to deploy this on a live system
+1. Open command line in the project folder
+2. Type **mvn clean** , we do this so that we can remove old builds of our code before rebuilding it again.
+3. Once the target folder has been removed you want to type **mvn package**, This will package all the source code in our Java project into the .jar file
+4. After this the target file will return. Navigate to that folder with the command **cd target**
+5. Run the program with **java -jar ToDoList-0.0.1.jar**
 
 ## Built With
 
